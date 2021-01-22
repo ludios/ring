@@ -730,8 +730,8 @@ impl Tag {
     /// Fails if `bytes` isn't `TAG_LEN` bytes long.
     pub fn new(bytes: &[u8]) -> Result<Tag, error::Unspecified> {
         use core::convert::TryInto;
-        let bytes: &[u8; BLOCK_LEN] = bytes.try_into()?;
-        Ok(Tag(bytes.into()))
+        let bytes: [u8; BLOCK_LEN] = bytes.try_into()?;
+        Ok(Tag(bytes))
     }
 }
 
